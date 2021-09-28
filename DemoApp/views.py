@@ -77,7 +77,7 @@ def validateUserDef(name,result):
         userInfo = loads(dumps(db.users.find({'name':name},{'_id':0})))
         result.update({'message':'Invalid user'})
         if userInfo:
-            result.update({'message':'welcome '+name,'status':'success','code':200})
+            result.update({'message':'hello '+name,'status':'success','code':200})
     except Exception as e:
         result.update({'message': str(e)})
     return result
