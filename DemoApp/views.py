@@ -11,6 +11,7 @@ class Start(View):
     def get(self,request):
         result = {'message': '', 'code': 400, 'status': 'failed'}
         try:
+            print('in hereeeeeeee')
             result = {'message': 'name is required'}
             if 'name' in request.GET and request.GET['name']!='':
                 result = startDef(request.GET['name'],result)
@@ -31,6 +32,7 @@ class EmailNotify(View):
     def get(self,request):
         result = {'message': '', 'code': 400, 'status': 'failed'}
         try:
+            print('**************')
             result = {'message': 'email is required'}
             if 'email' in request.GET and request.GET['email'] != '':
                 result = emailNotifyDef(request.GET['email'], result)
