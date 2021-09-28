@@ -3,6 +3,7 @@ from bson.json_util import loads,dumps
 from pymongo import MongoClient
 from django.http import HttpResponse
 import smtplib
+from datetime import datetime
 dbClient = MongoClient(host='localhost',port=27017)
 db = dbClient['sample']
 
@@ -56,6 +57,9 @@ def emailNotifyDef(email,result):
         result.update({'message': str(e)})
     return result
 
+def currentTime():
+    print(datetime.now())
+    
 class ValidateUser(View):
     def get(self,request):
         result = {'message': '', 'code': 400, 'status': 'failed'}
