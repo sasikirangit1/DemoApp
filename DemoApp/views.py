@@ -81,3 +81,10 @@ def validateUserDef(name,result):
     except Exception as e:
         result.update({'message': str(e)})
     return result
+
+def dec(func):
+    name = 'sasi'
+    return func(name)
+@dec
+def second(name):
+    print('hello ',name)
