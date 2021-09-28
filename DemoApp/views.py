@@ -55,3 +55,23 @@ def emailNotifyDef(email,result):
     except Exception as e:
         result.update({'message': str(e)})
     return result
+
+class ValidateUser(View):
+    def get(self,request):
+        result = {'message': '', 'code': 400, 'status': 'failed'}
+        try:
+            result = {'message': 'name is required'}
+            if 'name' in request.GET and request.GET['name']!='':
+                result = validateUserDef(request.GET['name'],result)
+        except Exception as e:
+            result.update({'message':str(e)})
+        return HttpResponse(dumps(result))
+def validateUserDef(name,result):
+    try:
+        userInfo = loads(dumps(db.users.find({'name':name},{'_id':0})))
+        result.update({'message':'Invalid user'})
+        if userInfo:
+            result.update({'message':'welcome '+name,'status':'success','code':200})
+    except Exception as e:
+        result.update({'message': str(e)})
+    return result

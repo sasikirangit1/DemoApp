@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('start/',Start.as_view()),
     path('emailNotify/',EmailNotify.as_view()),
+    path('validateUser/',ValidateUser.as_view()),
 ]
